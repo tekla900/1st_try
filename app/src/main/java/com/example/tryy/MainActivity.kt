@@ -15,19 +15,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editText: EditText
     private lateinit var listView: ListView
 
+// ეს რომ ქვემოთ გადავიტანე, onCreateში, გაიხსნა აპლიკაცია
+//    private fun innit(){
+//
+//        addButton = findViewById(R.id.add)
+//        clearButton = findViewById(R.id.clear)
+//        editText = findViewById(R.id.textView)
+//        listView = findViewById(R.id.listView)
+//
+//    }
 
-    private fun init(){
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
 
         addButton = findViewById(R.id.add)
         clearButton = findViewById(R.id.clear)
         editText = findViewById(R.id.textView)
         listView = findViewById(R.id.listView)
 
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         var itemlist = mutableListOf<String>()
         var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_multiple_choice, itemlist)
