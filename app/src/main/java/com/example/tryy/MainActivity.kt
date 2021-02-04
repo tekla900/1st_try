@@ -1,5 +1,6 @@
 package com.example.tryy
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -11,9 +12,18 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var addButton: Button
     private lateinit var clearButton: Button
-    private lateinit var deleteButton: Button
     private lateinit var editText: EditText
     private lateinit var listView: ListView
+
+
+    private fun init(){
+
+        addButton = findViewById(R.id.add)
+        clearButton = findViewById(R.id.clear)
+        editText = findViewById(R.id.textView)
+        listView = findViewById(R.id.listView)
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +37,19 @@ class MainActivity : AppCompatActivity() {
 
             editText.text.clear() }
 
-        listView.setOnClickListener{
 
-        }
 
         clearButton.setOnClickListener {
 
             itemlist.clear()
 
         }
+
+        listView.setOnItemClickListener { adapterView, view, i, l ->
+
+            editText.run { setTextColor(Color.GRAY) }
+
+        }
+
     }
 }
