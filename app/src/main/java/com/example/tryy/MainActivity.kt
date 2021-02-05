@@ -1,12 +1,15 @@
 package com.example.tryy
 
 import android.graphics.Color
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
+import java.lang.reflect.Array.set
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,15 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var editText: EditText
     private lateinit var listView: ListView
 
-// ეს რომ ქვემოთ გადავიტანე, onCreateში, გაიხსნა აპლიკაცია
-//    private fun innit(){
-//
-//        addButton = findViewById(R.id.add)
-//        clearButton = findViewById(R.id.clear)
-//        editText = findViewById(R.id.textView)
-//        listView = findViewById(R.id.listView)
-//
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,12 +43,17 @@ class MainActivity : AppCompatActivity() {
         clearButton.setOnClickListener {
 
             itemlist.clear()
+            adapter.notifyDataSetChanged()
 
         }
 
-        listView.setOnItemClickListener { adapterView, view, i, l ->
+        listView.setOnItemClickListener { _, _, _, _ ->
 
             editText.run { setTextColor(Color.GRAY) }
+            editText.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20F)
+            editText.paintFlags = editText.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            
+//            editText.text = Paint.STRIKE_THRU_TEXT_FLAG
 
         }
 
